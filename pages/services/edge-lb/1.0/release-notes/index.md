@@ -14,14 +14,14 @@ Release notes for Edge-LB.
 
 ## Noteworthy changes:
 
-- Updates HaProxy used by the pool servers to 1.8.12 from 1.7.6, please check the release notes for details
+- Updates HaProxy used by the pool servers to 1.8.12 from 1.7.6. Please check the Release Notes for details.
 - Pool server reloads are no longer blocked by persistent connections.
 - Stability, debuggability and reliability improvements in the pool server code.
 - The size of the pool container was reduced to 100MB from ~250
 - Transition to Master/Worker mode in HaProxy running on the pool server. If custom configuration templates are used, then they must be updated. Namely:
   - template must not specify the demon option
   - template must specify the `expose-fd listeners` option in the stats socket
-- EdgeLb now uses the default edgelb-pool CLI packages from DC/OS SDK. They do not support as of time being the `version` subcommand.
+- Edge-Lb now uses the default edgelb-pool CLI packages from the DC/OS SDK. Currently, they do not support the `version` subcommand.
 
 
 Shortlist:
@@ -52,7 +52,7 @@ $ git shortlog v1.0.3..HEAD | cat
 ## Known Issues
 
 * The steps presented in the UI to uninstall Edge-LB are currently incorrect. Follow the steps in the [Edge-LB uninstall documentation](/services/edge-lb/1.0/uninstalling/).
-* Edge-LB running on a CentOS/RHEL 7.2 node where /var/lib/mesos is formatted with ext4 may have connection issues.
+* Edge-LB running on a CentOS/RHEL 7.2 node where `/var/lib/mesos` is formatted with ext4 may have connection issues.
 * If a pool is configured with invalid constraints, that pool will not be properly created and will not respect pool deletion.  It must be removed manually.
 
 # v1.0.3
@@ -80,7 +80,7 @@ Shortlist:
 ## Known Issues
 
 * The steps presented in the UI to uninstall Edge-LB are currently incorrect. Follow the steps in the [Edge-LB uninstall documentation](/services/edge-lb/1.0/uninstalling/).
-* Edge-LB running on a CentOS/RHEL 7.2 node where /var/lib/mesos is formatted with ext4 may have connection issues.
+* Edge-LB running on a CentOS/RHEL 7.2 node where `/var/lib/mesos` is formatted with ext4 may have connection issues.
 * If a pool is configured with invalid constraints, that pool will not be properly created and will not respect pool deletion.  It must be removed manually.
 
 # v1.0.2
@@ -106,7 +106,7 @@ Shortlist:
 ## Known Issues
 
 * The steps presented in the UI to uninstall Edge-LB are currently incorrect. Follow the steps in the [Edge-LB uninstall documentation](/services/edge-lb/1.0/uninstalling/).
-* Edge-LB running on a CentOS/RHEL 7.2 node where /var/lib/mesos is formatted with ext4 may have connection issues.
+* Edge-LB running on a CentOS/RHEL 7.2 node where `/var/lib/mesos` is formatted with ext4 may have connection issues.
 * If a pool is configured with invalid constraints, that pool will not be properly created and will not respect pool deletion.  It must be removed manually.
 
 # v1.0.1
@@ -133,7 +133,7 @@ Shortlist:
 
 * V2 API backend.service regex selectors do not work properly
 * The steps presented in the UI to uninstall Edge-LB are currently incorrect. Follow the steps in the [Edge-LB uninstall documentation](/services/edge-lb/1.0/uninstalling/).
-* Edge-LB running on a CentOS/RHEL 7.2 node where /var/lib/mesos is formatted with ext4 may have connection issues.
+* Edge-LB running on a CentOS/RHEL 7.2 node where `/var/lib/mesos` is formatted with ext4 may have connection issues.
 * If a pool is configured with invalid constraints, that pool will not be properly created and will not respect pool deletion.  It must be removed manually.
 * Marathon-LB and Edge-LB pool servers cannot run on the same agent without changing the default ports because they both require 80/443 for serving traffic and 9090 for HAProxy statistics by default.
  An example is listed on [pool configuration with non-default ports](/services/edge-lb/1.0/pool-configuration/v2-examples/#internal-east-west-load-balancing/).
@@ -183,7 +183,7 @@ Shortlist:
 
 * A potentially serious situation exists in DC/OS 1.10 or 1.11 clusters for any Marathon application deployed using persistent volumes in conjunction with Edge-LB.  If Edge-LB is deployed on a public agent node, the schedulers may erroneously destroy one or more Marathon persistent volumes, potentially leading to data loss. This bug has been resolved in Edge-LB v1.0.1
 * The steps presented in the UI to uninstall Edge-LB are currently incorrect. Follow the steps in the [Edge-LB uninstall documentation](/services/edge-lb/1.0/uninstalling/).
-* Edge-LB running on a CentOS/RHEL 7.2 node where /var/lib/mesos is formatted with ext4 may have connection issues.
+* Edge-LB running on a CentOS/RHEL 7.2 node where `/var/lib/mesos` is formatted with ext4 may have connection issues.
 * If a pool is configured with invalid constraints, that pool will not be properly created and will not respect pool deletion.  It must be removed manually.
 
 # v0.1.9
@@ -216,7 +216,7 @@ Shortlist:
 ## Known Issues
 
 * The steps presented in the UI to uninstall Edge-LB are currently incorrect. Follow the steps in the [Edge-LB uninstall documentation](/services/edge-lb/0.1/uninstalling/).
-* Edge-LB running on a CentOS/RHEL 7.2 node where /var/lib/mesos is formatted with ext4 may have connection issues.
+* Edge-LB running on a CentOS/RHEL 7.2 node where `/var/lib/mesos` is formatted with ext4 may have connection issues.
 * If a pool is configured with invalid constraints, that pool will not be properly created and will not respect pool deletion.  It must be removed manually.
 
 # v0.1.8
