@@ -10,11 +10,57 @@ enterprise: false
 
 Release notes for Edge-LB.
 
+# v1.1.0
+
+## Noteworthy changes:
+
+- Updates HaProxy used by the pool servers to 1.8.12 from 1.7.6, please check the release notes for details
+- Pool server reloads are no longer blocked by persistent connections.
+- Stability, debuggability and reliability improvements in the pool server code.
+- The size of the pool container was reduced to 100MB from ~250
+- Transition to Master/Worker mode in HaProxy running on the pool server. If custom configuration templates are used, then they must be updated. Namely:
+  - template must not specify the demon option
+  - template must specify the `expose-fd listeners` option in the stats socket
+- EdgeLb now uses the default edgelb-pool CLI packages from DC/OS SDK. They do not support as of time being the `version` subcommand.
+
+
+Shortlist:
+
+```
+$ git shortlog v1.0.3..HEAD | cat
+      sdk: Update SDK buildchain to 0.42.1
+      sdk: replace stub cli for edgelb-pool with a default one
+      sdk: Use SDK version in build.gradle from the env, localize it to `framework/` dir
+      Bump pip requirements
+      Force rebuilding of all the deps while checking if cli binary has changed
+      Permit specifying custom linker flags to build_go_exe.sh
+      Move dcos-commons tooling into git subrepo
+      Extra debugging in ci-setup.sh script
+      Add pytest cache to gitignore
+      Makefile and Dockerfile should not be sent as context during lbmgr cont. build
+      Update haproxy to 1.8.12
+      Be more verbose with logging in order to boost debugging
+      Use instance with more IOPS when running integration tests
+```
+
+## Known Limitations
+
+* Edge-LB does not currently support `Disabled` security mode.
+* Edge-LB does not currently support `Strict` security mode on DC/OS 1.10, but does work in DC/OS 1.11 strict mode.
+* Edge-LB does not currently support self-service configuration; all configuration must be handled centrally.
+
+## Known Issues
+
+* The steps presented in the UI to uninstall Edge-LB are currently incorrect. Follow the steps in the [Edge-LB uninstall documentation](/services/edge-lb/1.0/uninstalling/).
+* Edge-LB running on a CentOS/RHEL 7.2 node where /var/lib/mesos is formatted with ext4 may have connection issues.
+* If a pool is configured with invalid constraints, that pool will not be properly created and will not respect pool deletion.  It must be removed manually.
+
 # v1.0.3
 
 ## Noteworthy changes:
 
 - Bumps SDK to version 0.42.1
+- Fixes a bug which was causing configuration reloads to cause short downtimes of the services behind the load balancer.
 
 Shortlist:
 
